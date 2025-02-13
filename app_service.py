@@ -5,10 +5,10 @@ import json
 
 app = Flask(__name__)
 
-# WebSocket connection (to local machine)
+# Store active WebSocket connections
 LOCAL_WEBSOCKET_CLIENTS = set()
 
-@app.route("/tunnel")
+@app.route("/tunnel", websocket=True)
 async def websocket_tunnel():
     """Handles incoming WebSocket connections from local machine"""
     websocket = request.environ["wsgi.websocket"]
